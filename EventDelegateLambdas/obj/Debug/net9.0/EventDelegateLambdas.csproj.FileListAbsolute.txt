@@ -1,0 +1,15 @@
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/bin/Debug/net9.0/EventDelegateLambdas
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/bin/Debug/net9.0/EventDelegateLambdas.deps.json
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/bin/Debug/net9.0/EventDelegateLambdas.runtimeconfig.json
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/bin/Debug/net9.0/EventDelegateLambdas.dll
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/bin/Debug/net9.0/EventDelegateLambdas.pdb
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/obj/Debug/net9.0/EventDelegateLambdas.GeneratedMSBuildEditorConfig.editorconfig
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/obj/Debug/net9.0/EventDelegateLambdas.AssemblyInfoInputs.cache
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/obj/Debug/net9.0/EventDelegateLambdas.AssemblyInfo.cs
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/obj/Debug/net9.0/EventDelegateLambdas.csproj.CoreCompileInputs.cache
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/obj/Debug/net9.0/EventDelegateLambdas.sourcelink.json
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/obj/Debug/net9.0/EventDelegateLambdas.dll
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/obj/Debug/net9.0/refint/EventDelegateLambdas.dll
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/obj/Debug/net9.0/EventDelegateLambdas.pdb
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/obj/Debug/net9.0/EventDelegateLambdas.genruntimeconfig.cache
+/Users/edwardmahama/Documents/Projects/Events-Delegate-Lambdas/EventDelegateLambdas/obj/Debug/net9.0/ref/EventDelegateLambdas.dll
