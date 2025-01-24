@@ -11,8 +11,9 @@
         // this use lambda expression to define the event handler
         worker.WorkStarted += (s, e) => Console.WriteLine($"Logging Work started event");
 
+        // this instaniate the delegate and pass the event handler to it
         //worker.WorkPerformed += new WorkPerformedHandler(WorkPerformed);
-        
+
         // This is the same as the above line but uses delegate inference
         worker.WorkPerformed += WorkPerformed; 
 
