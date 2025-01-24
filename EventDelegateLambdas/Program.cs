@@ -27,7 +27,7 @@
         worker.WorkCompleted += new EventHandler((s, e) => Console.WriteLine($"Logging Work completed event"));
         worker.WorkCompleted += (s, e) => Console.WriteLine($"Logging Work completed event");
         
-        worker.ExecuteWork(8, WorkType.Golf);
+        worker.ExecuteWork(4, WorkType.Golf);
     }
 
     /* 
