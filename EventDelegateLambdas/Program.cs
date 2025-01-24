@@ -14,14 +14,14 @@
         // Instaniate the delegate and pass the event handler to it
         worker.WorkPerformed += new WorkPerformedHandler(WorkPerformed);
 
+        // this is the same as above but uses delegate inference (so it will notiffy twice)
+        worker.WorkPerformed += WorkPerformed; 
+
         //Instaniate the delegate and pass the event handler to it
         worker.WorkPerformed1 += new EventHandler<WorkPerformedEventArgs>(WorkPerformed1);
 
         // this is the same as above but uses delegate inference (so it will notiffy twice)
         worker.WorkPerformed1 += WorkPerformed1;
-
-        // this is the same as above but uses delegate inference (so it will notiffy twice)
-        worker.WorkPerformed += WorkPerformed; 
 
         // this use lambda expression to define the event handler. These two are the same.
         worker.WorkCompleted += new EventHandler((s, e) => Console.WriteLine($"Logging Work completed event"));
