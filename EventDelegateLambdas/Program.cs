@@ -1,35 +1,34 @@
-﻿// See https://aka.ms/new-console-template for more information
-// NB: Events are notifcations/messages sent by an object to signal that something has happened
-// A delegate is the glue/pipeline that connects the events and an event handlers. 
-//It is a type that respresent pointers to method that can be invoked by the event
-// Event handlers recieved evartArgs from delegate amd process them. 
-var del1 = new WorkPerformedHandler(WorkPerfomed1);
-var del2 = new WorkPerformedHandler(WorkPerfomed2);
-del1 += del2;
-
-int finalHours = del1(10, WorkType.GenerateReports);
-
-
-static int WorkPerfomed1(int hours, WorkType workType)
+﻿internal class Program
 {
-    Console.WriteLine($"WorkPerfomed1 called: {workType} done with {hours} hours.");
-    return hours + 1;
-}
+    private static void Main(string[] args)
+    {
+        // NB: Events are notifcations/messages sent by an object to signal that something has happened
+        // A delegate is the glue/pipeline that connects the events and an event handlers. 
+        //It is a type that respresent pointers to method that can be invoked by the event
+        // Event handlers recieved evartArgs from delegate amd process them. 
+        var worker = new Worker();
 
-static int WorkPerfomed2(int hours, WorkType workType)
-{
-    Console.WriteLine($"WorkPerfomed2 called with {hours} hours of {workType}");
-    return hours + 2;
-}
+        // this use lambda expression to define the event handler
+        worker.WorkStarted += (s, e) => Console.WriteLine($"Logging Work started event");
 
+        //worker.WorkPerformed += new WorkPerformedHandler(WorkPerformed);
+        
+        // This is the same as the above line but uses delegate inference
+        worker.WorkPerformed += WorkPerformed; 
 
+        // this use lambda expression to define the event handler
+        worker.WorkCompleted += (s, e) => Console.WriteLine($"Logging Work completed event");
+        
+        worker.ExecuteWork(8, WorkType.Golf);
+    }
 
-// 1. Create a delegate
-public delegate int WorkPerformedHandler(int hours, WorkType workType);
-
-public enum WorkType
-{
-    GoToMeetings,
-    Golf,
-    GenerateReports
+    /* 
+        This method is the event handler
+        Event handlers recieved evartArgs from delegate amd process them. 
+    */
+    public static int WorkPerformed(Object sender, WorkPerformedEventArgs e)
+    {
+        Console.WriteLine($" Logging workPerformed event: Work performed for {e.Hours} hours on {e.WorkType}");
+        return e.Hours  + 1;
+    }
 }
