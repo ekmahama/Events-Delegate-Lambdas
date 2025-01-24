@@ -23,7 +23,8 @@
         // this is the same as above but uses delegate inference (so it will notiffy twice)
         worker.WorkPerformed += WorkPerformed; 
 
-        // this use lambda expression to define the event handler
+        // this use lambda expression to define the event handler. These two are the same.
+        worker.WorkCompleted += new EventHandler((s, e) => Console.WriteLine($"Logging Work completed event"));
         worker.WorkCompleted += (s, e) => Console.WriteLine($"Logging Work completed event");
         
         worker.ExecuteWork(8, WorkType.Golf);
