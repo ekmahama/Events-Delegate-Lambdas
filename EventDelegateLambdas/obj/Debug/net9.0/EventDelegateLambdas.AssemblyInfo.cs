@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EventDelegateLambdas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd705d4d1c52cb22eb6d40ddd0d434753b4e2797")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf22d03465de5af27977e0529aa71fc50bc27809")]
 [assembly: System.Reflection.AssemblyProductAttribute("EventDelegateLambdas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EventDelegateLambdas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
