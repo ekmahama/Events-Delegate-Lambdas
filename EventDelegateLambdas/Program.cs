@@ -1,47 +1,58 @@
-﻿internal class Program
+﻿using System.Text.Json.Nodes;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
-        // NB: Events are notifcations/messages sent by an object to signal that something has happened
-        // A delegate is the glue/pipeline that connects the events and an event handlers. 
-        //It is a type that respresent pointers to method that can be invoked by the event
-        // Event handlers recieved evartArgs from delegate amd process them. 
-        var worker = new Worker();
-
-        // this use lambda expression to define the event handler
-        worker.WorkStarted += (s, e) => Console.WriteLine($"Logging Work started event");
-
-        // Instaniate the delegate and pass the event handler to it
-        worker.WorkPerformed += new WorkPerformedHandler(WorkPerformed);
-
-        // this is the same as above but uses delegate inference (so it will notiffy twice)
-        worker.WorkPerformed += WorkPerformed; 
-
-        //Instaniate the delegate and pass the event handler to it
-        worker.WorkPerformed1 += new EventHandler<WorkPerformedEventArgs>(WorkPerformed1);
-
-        // this is the same as above but uses delegate inference (so it will notiffy twice)
-        worker.WorkPerformed1 += WorkPerformed1;
-
-        // this use lambda expression to define the event handler. These two are the same.
-        worker.WorkCompleted += new EventHandler((s, e) => Console.WriteLine($"Logging Work completed event"));
-        worker.WorkCompleted += (s, e) => Console.WriteLine($"Logging Work completed event");
+        // We are using lambda expression to instantiate the delegate
+        AddHandler addHandler = (a,b) => a + b;
         
-        worker.ExecuteWork(4, WorkType.Golf);
-    }
+        addHandler += (a, b) => 
+        {
+            System.Console.WriteLine($"The result {a} - {b} : " + (a - b));
+            return a + b;
+        };
 
-    /* 
-        This method is the event handler
-        Event handlers recieved evartArgs from delegate amd process them. 
-    */
-    public static int WorkPerformed(Object sender, WorkPerformedEventArgs e)
-    {
-        Console.WriteLine($" Logging workPerformed event: Work performed for {e.Hours} hours on {e.WorkType}");
-        return e.Hours  + 1;
-    }
+        var a = 2;
+        var b = 3;
+        int result = addHandler(a, b);
 
-    public static void WorkPerformed1(Object? sender, WorkPerformedEventArgs e)
-    {
-        Console.WriteLine($" Logging workPerformed1 event: Work performed for {e.Hours} hours on {e.WorkType}");
+        LogingHandler logingHandler = () =>
+        {
+            System.Console.WriteLine("This logs a message");
+            return true;
+        };
+
+        logingHandler();
+
+        var cust = new List<Customer>
+        {
+            new Customer { Id = 1, Name = "John" },
+            new Customer { Id = 2, Name = "Doe" },
+            new Customer { Id = 3, Name = "Jane" },
+            new Customer { Id = 4, Name = "Eddie" }
+
+        };
+
+        /*
+         The lamda expression used to fitler the customers whose name starts with "J" 
+         is a predicate that returns a boolean value. 
+
+         NB: Predicate is a function or expression that returns a boolean value
+        */
+
+        var D = cust
+            .Where(c => c.Name.StartsWith("J"))
+            .OrderBy(c => c.Name)
+            .ToList();
     }
+} 
+
+delegate int AddHandler(int a, int b);
+delegate bool LogingHandler();
+
+public class Customer
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
 }
