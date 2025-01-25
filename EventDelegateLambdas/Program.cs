@@ -4,55 +4,33 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        // We are using lambda expression to instantiate the delegate
-        AddHandler addHandler = (a,b) => a + b;
-        
-        addHandler += (a, b) => 
-        {
-            System.Console.WriteLine($"The result {a} - {b} : " + (a - b));
-            return a + b;
-        };
+        var data = new ProcessData();
 
-        var a = 2;
-        var b = 3;
-        int result = addHandler(a, b);
+        // Delegate
+        BizRulesDelegate addDel = (x, y) => x + y;
+        BizRulesDelegate multiplyDel = (x, y) => x * y;
+        data.Process(2, 3, addDel);
+        data.Process(2, 3, multiplyDel);
 
-        LogingHandler logingHandler = () =>
-        {
-            System.Console.WriteLine("This logs a message");
-            return true;
-        };
+        // Using Action<T>
 
-        logingHandler();
+        Action<int, int> addAction = (x, y) => System.Console.WriteLine(x + y);
+        Action<int, int> multiplyAction = (x, y) => System.Console.WriteLine(x * y);
+        data.ProcessAction(2, 3, addAction);
+        data.ProcessAction(2, 3, multiplyAction);
 
-        var cust = new List<Customer>
-        {
-            new Customer { Id = 1, Name = "John" },
-            new Customer { Id = 2, Name = "Doe" },
-            new Customer { Id = 3, Name = "Jane" },
-            new Customer { Id = 4, Name = "Eddie" }
 
-        };
+        // Using Func<T, TResult>
+        Func<int, int, int> addFunc = (x, y) => x + y;
+        Func<int, int, int> multiplyFunc = (x, y) => x * y;
 
-        /*
-         The lamda expression used to fitler the customers whose name starts with "J" 
-         is a predicate that returns a boolean value. 
+        data.ProcessFunc(2, 3, addFunc);
+        data.ProcessFunc(2, 3, multiplyFunc);
 
-         NB: Predicate is a function or expression that returns a boolean value
-        */
-
-        var D = cust
-            .Where(c => c.Name.StartsWith("J"))
-            .OrderBy(c => c.Name)
-            .ToList();
     }
 } 
 
-delegate int AddHandler(int a, int b);
-delegate bool LogingHandler();
-
-public class Customer
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-}
+/*
+Action<T> - Represents an out of the box c# delegate that takes one or more  parameters and does not return a value.
+Func<T, TResult> - Represents an out of the box c# delegate that takes one or more parameters and returns a value.
+*/
